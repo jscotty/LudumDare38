@@ -11,6 +11,8 @@ public class RotateBuilding : MonoBehaviour {
 
 
     public void RotateToAttractor(GameObject world) {
+        if (world == null)
+            world = GameObject.FindGameObjectWithTag("Attractor");
         Vector3 gravityUp = (transform.position - world.transform.position).normalized;
         Vector3 targetUp = transform.up;
         Quaternion targetRotation = Quaternion.FromToRotation(targetUp, gravityUp) * transform.rotation;
