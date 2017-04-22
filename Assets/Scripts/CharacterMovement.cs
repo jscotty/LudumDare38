@@ -76,7 +76,6 @@ public class CharacterMovement : MonoBehaviour {
 		transform.Translate(0, 0, movementZ);
         
         _body.AddRelativeTorque((Vector3.up * torque) * movementX);
-        Debug.Log((Vector3.up * torque) * movementX);
 
 		
 	}
