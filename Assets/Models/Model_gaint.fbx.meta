@@ -1,0 +1,400 @@
+fileFormatVersion: 2
+guid: daad3797a7c765741a8c1e850d3bf85c
+timeCreated: 1492861916
+licenseType: Pro
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: Arm_Left
+    100002: Arm_Right
+    100004: Leg_Left
+    100006: Leg_Right
+    100008: mixamorig:Head
+    100010: mixamorig:HeadTop_End
+    100012: mixamorig:Hips
+    100014: mixamorig:LeftArm
+    100016: mixamorig:LeftFoot
+    100018: mixamorig:LeftForeArm
+    100020: mixamorig:LeftHand
+    100022: mixamorig:LeftHandIndex1
+    100024: mixamorig:LeftHandIndex2
+    100026: mixamorig:LeftHandIndex3
+    100028: mixamorig:LeftHandIndex4
+    100030: mixamorig:LeftLeg
+    100032: mixamorig:LeftShoulder
+    100034: mixamorig:LeftToe_End
+    100036: mixamorig:LeftToeBase
+    100038: mixamorig:LeftUpLeg
+    100040: mixamorig:Neck
+    100042: mixamorig:RightArm
+    100044: mixamorig:RightFoot
+    100046: mixamorig:RightForeArm
+    100048: mixamorig:RightHand
+    100050: mixamorig:RightHandIndex1
+    100052: mixamorig:RightHandIndex2
+    100054: mixamorig:RightHandIndex3
+    100056: mixamorig:RightHandIndex4
+    100058: mixamorig:RightLeg
+    100060: mixamorig:RightShoulder
+    100062: mixamorig:RightToe_End
+    100064: mixamorig:RightToeBase
+    100066: mixamorig:RightUpLeg
+    100068: mixamorig:Spine
+    100070: mixamorig:Spine1
+    100072: mixamorig:Spine2
+    100074: //RootNode
+    100076: pCube1
+    100078: pCube10
+    100080: pCube10 1
+    100082: pCube11
+    100084: pCube11 1
+    100086: pCube12
+    100088: pCube12 1
+    100090: pCube13
+    100092: pCube13 1
+    100094: pCube14
+    100096: pCube14 1
+    100098: pCube2
+    100100: pCube3
+    100102: pCube3 1
+    100104: pCube4
+    100106: pCube4 1
+    100108: pCube5
+    100110: pCube5 1
+    100112: pCube6
+    100114: pCube6 1
+    100116: pCube7
+    100118: pCube7 1
+    100120: pCube8
+    100122: pCube8 1
+    100124: pCube9
+    100126: pCube9 1
+    100128: pCylinder1
+    100130: pCylinder2
+    100132: pCylinder22
+    100134: pCylinder3
+    100136: pCylinder4
+    100138: pCylinder6
+    100140: pCylinder6 1
+    100142: pCylinder7
+    100144: pCylinder7 1
+    100146: pCylinder8
+    100148: pCylinder8 1
+    100150: pCylinder9
+    100152: pCylinder9 1
+    100154: pHelix2
+    100156: pSphere1
+    100158: pSphere10
+    100160: pSphere10 1
+    100162: pSphere11
+    100164: pSphere11 1
+    100166: pSphere12
+    100168: pSphere12 1
+    100170: pSphere13
+    100172: pSphere13 1
+    100174: pSphere14
+    100176: pSphere14 1
+    100178: pSphere2
+    100180: pSphere3
+    100182: pSphere4
+    100184: pSphere5
+    100186: pSphere5 1
+    100188: pSphere6
+    100190: pSphere6 1
+    100192: pSphere8
+    100194: pSphere8 1
+    100196: pSphere9
+    100198: pSphere9 1
+    100200: transform1
+    100202: transform10
+    100204: transform11
+    100206: transform12
+    100208: transform13
+    100210: transform14
+    100212: transform15
+    100214: transform16
+    100216: transform17
+    100218: transform18
+    100220: transform19
+    100222: transform2
+    100224: transform20
+    100226: transform21
+    100228: transform22
+    100230: transform23
+    100232: transform24
+    100234: transform25
+    100236: transform26
+    100238: transform27
+    100240: transform28
+    100242: transform29
+    100244: transform3
+    100246: transform30
+    100248: transform31
+    100250: transform32
+    100252: transform33
+    100254: transform34
+    100256: transform35
+    100258: transform36
+    100260: transform37
+    100262: transform38
+    100264: transform39
+    100266: transform4
+    100268: transform40
+    100270: transform41
+    100272: transform42
+    100274: transform43
+    100276: transform44
+    100278: transform45
+    100280: transform46
+    100282: transform47
+    100284: transform48
+    100286: transform49
+    100288: transform5
+    100290: transform50
+    100292: transform51
+    100294: transform52
+    100296: transform53
+    100298: transform54
+    100300: transform55
+    100302: transform56
+    100304: transform57
+    100306: transform58
+    100308: transform59
+    100310: transform6
+    100312: transform60
+    100314: transform61
+    100316: transform7
+    100318: transform8
+    100320: transform9
+    400000: Arm_Left
+    400002: Arm_Right
+    400004: Leg_Left
+    400006: Leg_Right
+    400008: mixamorig:Head
+    400010: mixamorig:HeadTop_End
+    400012: mixamorig:Hips
+    400014: mixamorig:LeftArm
+    400016: mixamorig:LeftFoot
+    400018: mixamorig:LeftForeArm
+    400020: mixamorig:LeftHand
+    400022: mixamorig:LeftHandIndex1
+    400024: mixamorig:LeftHandIndex2
+    400026: mixamorig:LeftHandIndex3
+    400028: mixamorig:LeftHandIndex4
+    400030: mixamorig:LeftLeg
+    400032: mixamorig:LeftShoulder
+    400034: mixamorig:LeftToe_End
+    400036: mixamorig:LeftToeBase
+    400038: mixamorig:LeftUpLeg
+    400040: mixamorig:Neck
+    400042: mixamorig:RightArm
+    400044: mixamorig:RightFoot
+    400046: mixamorig:RightForeArm
+    400048: mixamorig:RightHand
+    400050: mixamorig:RightHandIndex1
+    400052: mixamorig:RightHandIndex2
+    400054: mixamorig:RightHandIndex3
+    400056: mixamorig:RightHandIndex4
+    400058: mixamorig:RightLeg
+    400060: mixamorig:RightShoulder
+    400062: mixamorig:RightToe_End
+    400064: mixamorig:RightToeBase
+    400066: mixamorig:RightUpLeg
+    400068: mixamorig:Spine
+    400070: mixamorig:Spine1
+    400072: mixamorig:Spine2
+    400074: //RootNode
+    400076: pCube1
+    400078: pCube10
+    400080: pCube10 1
+    400082: pCube11
+    400084: pCube11 1
+    400086: pCube12
+    400088: pCube12 1
+    400090: pCube13
+    400092: pCube13 1
+    400094: pCube14
+    400096: pCube14 1
+    400098: pCube2
+    400100: pCube3
+    400102: pCube3 1
+    400104: pCube4
+    400106: pCube4 1
+    400108: pCube5
+    400110: pCube5 1
+    400112: pCube6
+    400114: pCube6 1
+    400116: pCube7
+    400118: pCube7 1
+    400120: pCube8
+    400122: pCube8 1
+    400124: pCube9
+    400126: pCube9 1
+    400128: pCylinder1
+    400130: pCylinder2
+    400132: pCylinder22
+    400134: pCylinder3
+    400136: pCylinder4
+    400138: pCylinder6
+    400140: pCylinder6 1
+    400142: pCylinder7
+    400144: pCylinder7 1
+    400146: pCylinder8
+    400148: pCylinder8 1
+    400150: pCylinder9
+    400152: pCylinder9 1
+    400154: pHelix2
+    400156: pSphere1
+    400158: pSphere10
+    400160: pSphere10 1
+    400162: pSphere11
+    400164: pSphere11 1
+    400166: pSphere12
+    400168: pSphere12 1
+    400170: pSphere13
+    400172: pSphere13 1
+    400174: pSphere14
+    400176: pSphere14 1
+    400178: pSphere2
+    400180: pSphere3
+    400182: pSphere4
+    400184: pSphere5
+    400186: pSphere5 1
+    400188: pSphere6
+    400190: pSphere6 1
+    400192: pSphere8
+    400194: pSphere8 1
+    400196: pSphere9
+    400198: pSphere9 1
+    400200: transform1
+    400202: transform10
+    400204: transform11
+    400206: transform12
+    400208: transform13
+    400210: transform14
+    400212: transform15
+    400214: transform16
+    400216: transform17
+    400218: transform18
+    400220: transform19
+    400222: transform2
+    400224: transform20
+    400226: transform21
+    400228: transform22
+    400230: transform23
+    400232: transform24
+    400234: transform25
+    400236: transform26
+    400238: transform27
+    400240: transform28
+    400242: transform29
+    400244: transform3
+    400246: transform30
+    400248: transform31
+    400250: transform32
+    400252: transform33
+    400254: transform34
+    400256: transform35
+    400258: transform36
+    400260: transform37
+    400262: transform38
+    400264: transform39
+    400266: transform4
+    400268: transform40
+    400270: transform41
+    400272: transform42
+    400274: transform43
+    400276: transform44
+    400278: transform45
+    400280: transform46
+    400282: transform47
+    400284: transform48
+    400286: transform49
+    400288: transform5
+    400290: transform50
+    400292: transform51
+    400294: transform52
+    400296: transform53
+    400298: transform54
+    400300: transform55
+    400302: transform56
+    400304: transform57
+    400306: transform58
+    400308: transform59
+    400310: transform6
+    400312: transform60
+    400314: transform61
+    400316: transform7
+    400318: transform8
+    400320: transform9
+    4300000: pCylinder22
+    9500000: //RootNode
+    13700000: pCylinder22
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
