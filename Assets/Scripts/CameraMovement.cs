@@ -42,7 +42,6 @@ public class CameraMovement : MonoBehaviour {
         {
             transform.position = target.position + offsetPosition;
         }
-
         // compute rotation
         if (lookAt)
         {
