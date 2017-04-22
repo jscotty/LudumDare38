@@ -15,6 +15,6 @@ public class WheelBehaviour : MonoBehaviour {
 	}
 
     void Update() {
-        float speed = movement.getSpeedPercentage;
+
     }
 }
