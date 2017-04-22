@@ -7,7 +7,7 @@ Shader "Curve/Unlit Textured outlined"
 {
 	Properties {
 		_MainTex ("Texture", 2D) = "white" {}
-		_Outline ("outline strength", Range(0.0,0.25)) = 0.01
+		_Outline ("outline strength", Range(0.0,10)) = 0.01
 		_OutlineColor ("Outline color", Color) = (0,0,0,0)
 	}
 	SubShader {
@@ -43,25 +43,9 @@ Shader "Curve/Unlit Textured outlined"
 			float4 _MainTex_ST;
 	        fixed _Outline;
 	        fixed4 _OutlineColor;
-
-	        half4 Bend(half4 v){
-	       		half4 wpos = mul(unity_ObjectToWorld, v); // world pos from vertex
-
-	       		half2 xzDistance = (wpos.xz - _CurveOrigin.xz) / _Scale.xz; // x and z distance divided by scale for flatting the x or z scale
-	       		half dist = length(xzDistance);
-
-	       		dist = max(0, dist - _FlatMargin);
-
-	       		wpos.y -= dist * dist * _Curvature; // calculate y curve
-
-	       		wpos = mul(unity_WorldToObject, wpos); // convert back to object space
-
-	       		return wpos;
-	        }
 			
 			v2f vert (appdata v) {
-				//curve
-	        	half4 vpos = Bend(v.vertex);
+	        	half4 vpos = v.vertex;
 	        	float3 norm = normalize(v.normal);
 	        	vpos.xyz += norm * _Outline;
 	        	v.vertex = vpos;
@@ -104,27 +88,8 @@ Shader "Curve/Unlit Textured outlined"
        		//standard properties
 			sampler2D _MainTex;
 			float4 _MainTex_ST;
-
-	        half4 Bend(half4 v){
-	       		half4 wpos = mul(unity_ObjectToWorld, v); // world pos from vertex
-
-	       		half2 xzDistance = (wpos.xz - _CurveOrigin.xz) / _Scale.xz; // x and z distance divided by scale for flatting the x or z scale
-	       		half dist = length(xzDistance);
-
-	       		dist = max(0, dist - _FlatMargin);
-
-	       		wpos.y -= dist * dist * _Curvature; // calculate y curve
-
-	       		wpos = mul(unity_WorldToObject, wpos); // convert back to object space
-
-	       		return wpos;
-	        }
 			
 			v2f vert (appdata v) {
-				//curve
-	        	half4 vpos = Bend(v.vertex);
-	        	v.vertex = vpos;
-
 				v2f o;
 				o.vertex = UnityObjectToClipPos(v.vertex);
 				o.uv = TRANSFORM_TEX(v.uv, _MainTex);

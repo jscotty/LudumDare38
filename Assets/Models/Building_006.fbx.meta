@@ -10,7 +10,9 @@ ModelImporter:
     400000: Building_006
     400002: //RootNode
     2300000: Building_006
+    2300002: //RootNode
     3300000: Building_006
+    3300002: //RootNode
     4300000: Building_006
   materials:
     importMaterials: 1
