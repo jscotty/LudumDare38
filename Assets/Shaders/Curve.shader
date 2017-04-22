@@ -7,7 +7,7 @@ Shader "Curve/Standard surface" {
 		_MainTex ("Albedo (RGB)", 2D) = "white" {}
 	}
 	SubShader {
-		Tags { "RenderType"="Opaque" }
+		Tags { "RenderType"="Opaque" "IgnoreProjector" = "True" }
 		LOD 200
 		
 		CGPROGRAM

@@ -13,6 +13,7 @@ public class CharacterMovement : MonoBehaviour {
 
 	[Header("Player settings")]
 	[SerializeField] private float _speed = 5f;
+	[SerializeField] private float _power = 1f;
 	[SerializeField] private float _rotationSpeed = 15f;
 	[SerializeField] private float _jumpSpeed = 5f;
 	/*[Space(5)]
@@ -28,8 +29,11 @@ public class CharacterMovement : MonoBehaviour {
 	//private float _characterHeight; //save player height
 	private float _crouch;
 	private float _distanceToGround = 0f;
+    public float torque = 1f;
 
-	private CharacterStateManager stateManager;
+    float movementZ;
+
+    private CharacterStateManager stateManager;
 
 	void Start(){
 		_collider = GetComponent<CapsuleCollider>();
@@ -44,7 +48,21 @@ public class CharacterMovement : MonoBehaviour {
 	void FixedUpdate() {
 		float speed = _speed * Time.deltaTime, rotationSpeed = _rotationSpeed * Time.deltaTime;
 		float movementX = Input.GetAxis(HORIZONTAL) * rotationSpeed;
-		float movementZ = Input.GetAxis(VERTICAL) *  speed;
+        if (Input.GetKey(KeyCode.W)) {
+		    movementZ += Time.deltaTime *  _power;
+            if (movementZ > 0)
+                movementZ = Mathf.Clamp(movementZ, 0, speed);
+            else if (movementZ < 0)
+                movementZ = Mathf.Clamp(movementZ, -speed, 0);
+        } else if (Input.GetKey(KeyCode.S)) {
+		    movementZ -= Time.deltaTime *  _power/2;
+            if (movementZ > 0)
+                movementZ = Mathf.Clamp(movementZ, 0, speed);
+            else if (movementZ < 0)
+                movementZ = Mathf.Clamp(movementZ, -speed, 0);
+        }
+
+        
 
 		Vector3 desiredVelocity = _body.velocity;
 		if(Input.GetKey(_jumpKey) && IsGrounded()){
@@ -56,23 +74,11 @@ public class CharacterMovement : MonoBehaviour {
 		else stateManager.SetNewState(MoveState.IDLE);
 
 		transform.Translate(0, 0, movementZ);
-		transform.Rotate(0,movementX,0);
+        
+        _body.AddRelativeTorque((Vector3.up * torque) * movementX);
+        Debug.Log((Vector3.up * torque) * movementX);
 
-		//crouch
-		/*if(Input.GetKey(_crouchKey)){
-			if(movementZ > 0 || movementX > 0) stateManager.SetNewState(MoveState.WALK);
-			else stateManager.SetNewState(MoveState.IDLE);
-			_crouch = Mathf.Clamp(_crouchDepth, .1f, _characterHeight); //clamp if depth is bigger than character
-			_collider.height = _crouch;
-			speed /= 2;
-		} else {
-			if(movementZ > 0 || movementX > 0) stateManager.SetNewState(MoveState.RUN);
-			else stateManager.SetNewState(MoveState.IDLE);
-			if(_crouch >= _characterHeight) return;
-			_crouch += _raiseSpeed * Time.deltaTime;
-
-			_collider.height = _crouch;
-		}*/
+		
 	}
 
 	private bool IsGrounded(){
