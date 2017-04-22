@@ -1,19 +1,15 @@
 fileFormatVersion: 2
-guid: 019e305e6924d354997baee109994a3e
-timeCreated: 1492870042
+guid: 2903cacb90443584f98181a10c77b515
+timeCreated: 1492893178
 licenseType: Pro
 ModelImporter:
   serializedVersion: 19
   fileIDToRecycleName:
-    100000: Building_005
-    100002: //RootNode
-    400000: Building_005
-    400002: //RootNode
-    2300000: Building_005
-    2300002: //RootNode
-    3300000: Building_005
-    3300002: //RootNode
-    4300000: Building_005
+    100000: //RootNode
+    400000: //RootNode
+    2300000: //RootNode
+    3300000: //RootNode
+    4300000: Building_009
   materials:
     importMaterials: 1
     materialName: 0
