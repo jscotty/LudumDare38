@@ -61,9 +61,9 @@ public class CharacterMovement : MonoBehaviour {
                 if (OnSlip != null)
                     OnSlip();
             } else {
-                if (movementZ > speed / 2) {
+                if (movementZ > speed / 1.5f) {
                     if (movementX >= rotationSpeed / 2f || movementX <= -(rotationSpeed / 2f)) {
-                        if (movementX >= rotationSpeed/1.3f || movementX <= -(rotationSpeed / 1.3f)) {
+                        if (movementX >= rotationSpeed/1.1f || movementX <= -(rotationSpeed / 1.1f)) {
                             if (OnBurnout != null)
                                 OnBurnout();
                             if (OnSlip != null)
