@@ -15,6 +15,14 @@ public class GravityAttractor : MonoBehaviour {
         transform.tag = "Attractor";
 	}
 
+    public Vector3 Gravity (Transform target) {
+        Vector3 gravityUp = (target.position - transform.position).normalized;
+        Vector3 targetUp = target.up;
+        Quaternion targetRotation = Quaternion.FromToRotation(targetUp, gravityUp) * target.rotation;
+        target.rotation = Quaternion.Slerp(target.rotation, targetRotation, 50 * Time.deltaTime);
+        return gravityUp * gravity;
+    }
+
     public void Attract(Transform target, Rigidbody body) {
         Vector3 gravityUp = (target.position - transform.position).normalized;
         Vector3 targetUp = target.up;

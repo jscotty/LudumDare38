@@ -19,6 +19,8 @@ public class CharacterMovement : MonoBehaviour {
     public delegate void StopSlip ();
     public event Slip OnStopSlip;
 
+    [SerializeField] private GravityAttractor attractor;
+
     [Header("Car settings")]
 	[SerializeField] private float speed = 5f;
 	[SerializeField] private float speedBackwards = 5f;
@@ -39,7 +41,9 @@ public class CharacterMovement : MonoBehaviour {
     void Start(){
 		_body = GetComponent<Rigidbody>();
 
-		_distanceToGround = 0;
+        if (attractor == null) {
+            attractor = GameObject.FindGameObjectWithTag("Attractor").GetComponent<GravityAttractor>();
+        }
 	}
 
 	void Update() {
@@ -104,28 +108,38 @@ public class CharacterMovement : MonoBehaviour {
                 OnStopBurnout();
 
 
-            if (movementZ > 0.2f) {
-                if (movementX >= 2 || movementX <= -2) {
-                    if (OnSlip != null)
-                        OnSlip();
+
+            if (movementZ > speed / 2) {
+                if (movementX >= rotationSpeed / 2f || movementX <= -(rotationSpeed / 2f)) {
+                    if (movementX >= rotationSpeed / 1.3f || movementX <= -(rotationSpeed / 1.3f)) {
+                        if (OnBurnout != null)
+                            OnBurnout();
+                        if (OnSlip != null)
+                            OnSlip();
+                    } else {
+                        if (OnSlip != null)
+                            OnSlip();
+                    }
                 } else {
                     if (OnStopSlip != null)
                         OnStopSlip();
+                    if (OnStopBurnout != null)
+                        OnStopBurnout();
                 }
             } else {
                 if (OnStopSlip != null)
                     OnStopSlip();
+                if (OnStopBurnout != null)
+                    OnStopBurnout();
             }
         }
-		transform.Translate(0, 0, movementZ*Time.deltaTime);
 
         if (movementZ!=0)
             transform.Rotate(0, movementX*Time.deltaTime, 0);
-    }
 
-	private bool IsGrounded(){
-		return Physics.Raycast(transform.position, Vector3.down, _distanceToGround + 0.1f);
-	}
+        Vector3 direction = new Vector3(transform.forward.x * movementZ, transform.forward.y * movementZ, transform.forward.z * movementZ);
+        _body.velocity = direction + attractor.Gravity(transform);
+    }
 
     public float getMovevementZPercentage {
         get { return movementZ / speed; }
