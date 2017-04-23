@@ -10,18 +10,24 @@ public class CharacterMovement : MonoBehaviour {
 	//constants
 	private const string HORIZONTAL = "Horizontal", VERTICAL = "Vertical";
 
+    public delegate void Burnout ();
+    public event Burnout OnBurnout;
+    public delegate void StopBurnout ();
+    public event StopBurnout OnStopBurnout;
+    public delegate void Slip ();
+
 	[Header("Car settings")]
 	[SerializeField] private float _speed = 5f;
 	[SerializeField] private float _speedBackwards = 5f;
     [SerializeField] private float _power = 1f;
-	[SerializeField] private float _rotationSpeed = 15f;
-	[SerializeField] private float _jumpSpeed = 5f;
+    [SerializeField] private float _breaks = 1f;
+    [SerializeField] private float _rotationSpeed = 15f;
+    [SerializeField] private float torque = 1f;
     
 	private Rigidbody _body;
 
 	private float _crouch;
 	private float _distanceToGround = 0f;
-    public float torque = 1f;
 
     float movementZ;
 
@@ -40,12 +46,23 @@ public class CharacterMovement : MonoBehaviour {
                 movementZ = Mathf.Clamp(movementZ, 0, speed);
             else if (movementZ < 0)
                 movementZ = Mathf.Clamp(movementZ, -speedBackwards, 0);
+
+            if (movementZ < 0.1f) {
+                if (OnBurnout != null)
+                    OnBurnout();
+            } else {
+                if (OnStopBurnout != null)
+                    OnStopBurnout();
+            }
         } else if (Input.GetKey(KeyCode.S)) {
-		    movementZ -= Time.deltaTime *  _power*2;
-            if (movementZ > 0)
+            if (movementZ > 0) {
+                movementZ -= Time.deltaTime * _breaks;
                 movementZ = Mathf.Clamp(movementZ, 0, speed);
-            else if (movementZ < 0)
+            } else if (movementZ < 0) {
+                movementZ -= Time.deltaTime * _power * 2;
                 movementZ = Mathf.Clamp(movementZ, -speedBackwards, 0);
+            } else 
+                movementZ -= Time.deltaTime * _power * 2;
         } else {
             if (movementZ > 0) {
                 movementZ = Mathf.Clamp(movementZ, 0, speed);
@@ -54,34 +71,16 @@ public class CharacterMovement : MonoBehaviour {
                 movementZ += Time.deltaTime * _power/1.5f;
                 movementZ = Mathf.Clamp(movementZ, -speedBackwards, 0);
             }
+            if (OnStopBurnout != null)
+                OnStopBurnout();
         }
 		transform.Translate(0, 0, movementZ);
-        
-        _body.AddRelativeTorque((Vector3.up * torque) * movementX);
-	}
+
+        if (movementZ!=0)
+            transform.Rotate(0, movementX, 0);
+    }
 
 	private bool IsGrounded(){
 		return Physics.Raycast(transform.position, Vector3.down, _distanceToGround + 0.1f);
 	}
-
-    private void calculatePercentage() {
-        if (movementZ == 0) {
-            Debug.Log(0);
-            return;
-        }
-
-        if (movementZ > 0) {
-            Debug.Log((movementZ/(_speed*Time.deltaTime))*100);
-            return;
-        }
-
-        if (movementZ < 0) {
-            Debug.Log((movementZ/ (_speedBackwards * Time.deltaTime)) *100);
-            return;
-        }
-    }
-
-    public float getSpeedPercentage {
-        get { calculatePercentage(); return movementZ; }
-    }
 }
