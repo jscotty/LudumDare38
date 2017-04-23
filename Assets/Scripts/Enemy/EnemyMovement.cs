@@ -24,7 +24,7 @@ public class EnemyMovement : MonoBehaviour {
     public float maxDistance = 5;
     public float directionDistance = 5;
     public float targetDistance = 5;
-        float followSpeed = 11;
+       public float followSpeed = 11;
 
     float distanceValue = 1000f;
     int targetID = 0;
@@ -40,6 +40,7 @@ public class EnemyMovement : MonoBehaviour {
                 // Move forward
                 transform.Translate(Vector3.forward * speed * Time.smoothDeltaTime);
             } else {
+                Debug.Log("E");
                 // If there is a object at the right side of the object then give a random direction
                 if (Physics.Raycast(transform.position, transform.right, directionDistance)) {
                     dIrection = Random.Range(-1, 2);
@@ -57,6 +58,7 @@ public class EnemyMovement : MonoBehaviour {
      {
             transform.LookAt(target);
             transform.Translate(Vector3.forward * followSpeed * Time.smoothDeltaTime);
+
         }
     }
 }
