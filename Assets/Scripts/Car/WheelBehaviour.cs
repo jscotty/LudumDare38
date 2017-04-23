@@ -9,12 +9,5 @@ using UnityEngine;
 public class WheelBehaviour : MonoBehaviour {
     
     [SerializeField] private CharacterMovement movement;
-
-	void Start () {
-		
-	}
-
-    void Update() {
-
-    }
+    
 }
