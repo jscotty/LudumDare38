@@ -12,8 +12,6 @@ public class EnemyMovement : MonoBehaviour {
     [SerializeField] private float speed = 2f;
     [SerializeField] private float radius = 15f;
 
-    [SerializeField] private Transform waypointParent;
-
     public Transform target;
     private Rigidbody body;
     private Vector3 distance;
@@ -36,7 +34,6 @@ public class EnemyMovement : MonoBehaviour {
         // If distance is bigger then distance between target, wander around.
         if (dist > targetDistance)  {
             //Check if there is a collider in a certain distance of the object if not then do the following
-            Debug.DrawRay(transform.position, transform.forward);
             if (!Physics.Raycast(transform.position, transform.forward, maxDistance)) {
                 // Move forward
                 transform.Translate(Vector3.forward * speed * Time.smoothDeltaTime);
@@ -59,7 +56,7 @@ public class EnemyMovement : MonoBehaviour {
         if (dist< targetDistance)
      {
             transform.LookAt(target);
-            transform.Translate(Vector3.forward * followSpeed * Time.smoothDeltaTime);
+            transform.Translate(Vector3.forward * speed * Time.smoothDeltaTime);
 
         }
     }
