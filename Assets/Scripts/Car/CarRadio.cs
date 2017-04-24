@@ -54,7 +54,7 @@ public class CarRadio : MonoBehaviour {
 
     void SetAudioOutput () {
         Debug.Log(source.clip.name);
-        radioAudioOutput.text = "Now playing: " + source.clip.name;
+        radioAudioOutput.text =  source.clip.name;
         radioChannelOutput.text = "Channel: " + channels[activeChannel].channelName;
     }
 }

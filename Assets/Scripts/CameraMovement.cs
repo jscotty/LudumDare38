@@ -7,49 +7,18 @@ using System.Collections;
 
 public class CameraMovement : MonoBehaviour {
 
-    [SerializeField]
-    private Transform target;
+    private const string MOUSE_X = "Mouse X", MOUSE_Y = "Mouse Y";
 
-    [SerializeField]
-    private Vector3 offsetPosition;
+    public GameObject target;
+    public float rotateSpeed = 5;
+    Vector3 offset;
 
-    [SerializeField]
-    private Space offsetPositionSpace = Space.Self;
-
-    [SerializeField]
-    private bool lookAt = true;
-
-    private void Update()
-    {
-        Refresh();
+    void Start () {
+        offset = target.transform.position - transform.position;
     }
 
-    public void Refresh()
-    {
-        if (target == null)
-        {
-            Debug.LogWarning("Missing target ref !", this);
-
-            return;
-        }
-
-        // compute position
-        if (offsetPositionSpace == Space.Self)
-        {
-            transform.position = target.TransformPoint(offsetPosition);
-        }
-        else
-        {
-            transform.position = target.position + offsetPosition;
-        }
-        // compute rotation
-        if (lookAt)
-        {
-            transform.LookAt(target);
-        }
-        else
-        {
-            transform.rotation = target.rotation;
-        }
+    void Update () {
+        if (!Input.GetMouseButton(0)) return;
+        transform.RotateAround(transform.parent.position, transform.parent.up, Input.GetAxis(MOUSE_X) * (rotateSpeed * Time.deltaTime));
     }
 }
