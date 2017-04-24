@@ -18,6 +18,7 @@ public class CameraMovement : MonoBehaviour {
     }
 
     void Update () {
+        if (GameManager.paused) return;
         if (!Input.GetMouseButton(0)) return;
         transform.RotateAround(transform.parent.position, transform.parent.up, Input.GetAxis(MOUSE_X) * (rotateSpeed * Time.deltaTime));
     }

@@ -11,22 +11,28 @@ public class EnemyMovement : MonoBehaviour {
 
     [SerializeField] private float speed = 2f;
 
-    public Transform target;
+    [SerializeField] private Transform target;
     private Rigidbody body;
     private Vector3 distance;
-    private SphereCollider triggerSphere;
 
-    float rotateSpeed = 10; 
+    [SerializeField] private float rotateSpeed = 10; 
     private int dIrection = -1;
-    public float maxDistance = 5;
-    public float directionDistance = 5;
-    public float targetDistance = 5;
-       public float followSpeed = 11;
+    [SerializeField] private float maxDistance = 10;
+    [SerializeField] private float distanceToStomp = 2;
+    [SerializeField] private float directionDistance = 5;
+    [SerializeField] private float targetDistance = 25;
+    [SerializeField] private float followSpeed = 11;
+
+
+    private Vector3 targetPoint;
+    private Quaternion targetRotation;
 
     float distanceValue = 1000f;
     int targetID = 0;
+    
 
     void Update () {
+        if (GameManager.paused) return;
         //Check Distance between current object and Target
         float dist = Vector3.Distance(target.position, transform.position);
         //print("Distance to other:" +dist);
@@ -39,11 +45,11 @@ public class EnemyMovement : MonoBehaviour {
             } else {
                 // If there is a object at the right side of the object then give a random direction
                 if (Physics.Raycast(transform.position, transform.right, directionDistance)) {
-                    dIrection = Random.Range(-1, 2);
+                    dIrection = Random.Range(-2, 3);
                 }
                 // If there is a object at the left side of the object then give a random direction
                 if (Physics.Raycast(transform.position, -transform.right, directionDistance)) {
-                    dIrection = Random.Range(-1, 2);
+                    dIrection = Random.Range(-2, 3);
                 }
                 // rotate 90 degrees in the random direction 
                 transform.Rotate(Vector3.up, 90 * rotateSpeed * Time.smoothDeltaTime * dIrection);
@@ -52,9 +58,23 @@ public class EnemyMovement : MonoBehaviour {
         // If current distance is smaller than the given ditance, then rotate towards player, and translate the rotation into forward motion times the given speed
         if (dist< targetDistance)
      {
-            transform.LookAt(target);
-            transform.Translate(Vector3.forward * speed * Time.smoothDeltaTime);
+            targetPoint = target.transform.position - transform.position;
+            targetRotation = Quaternion.LookRotation(targetPoint, transform.up);
+            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * 2.0f);
+
+
+            if (dist <= distanceToStomp) {
+                GetComponent<Animator>().SetBool("stomp", true);
+            } else {
+
+                transform.Translate(Vector3.forward * speed * Time.smoothDeltaTime);
+            }
 
         }
+    }
+
+    public void Stomped () {
+
+        GameManager.instance.Die();
     }
 }

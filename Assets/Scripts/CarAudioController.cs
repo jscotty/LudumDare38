@@ -25,6 +25,7 @@ public class CarAudioController : MonoBehaviour {
             audios[i].clip = clips[i];
             audios[i].loop = true;
             audios[i].playOnAwake = false;
+            audios[i].volume = PlayerPrefs.GetFloat("effect");
         }
 
         movement.OnSlip += Skid;
@@ -78,5 +79,10 @@ public class CarAudioController : MonoBehaviour {
         if (!isSlipping) return;
         audios[2].Stop();
         isSlipping = false;
+    }
+    public void ChangeSettings () {
+        for (int i = 0 ; i < audios.Length ; i++) {
+            audios[i].volume = PlayerPrefs.GetFloat("effect");
+        }
     }
 }

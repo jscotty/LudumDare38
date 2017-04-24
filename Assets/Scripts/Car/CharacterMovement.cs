@@ -37,6 +37,8 @@ public class CharacterMovement : MonoBehaviour {
     public float movementZ { get; private set; }
     public float movementX { get; private set; }
 
+    private bool death = false;
+
 
     void Start(){
 		_body = GetComponent<Rigidbody>();
@@ -47,6 +49,8 @@ public class CharacterMovement : MonoBehaviour {
 	}
 
 	void Update() {
+        if (GameManager.paused) return;
+        if (death) return;
         movementX = Input.GetAxis(HORIZONTAL) * rotationSpeed;
         if (Input.GetKey(KeyCode.W)) {
 		    movementZ +=  power;
@@ -143,6 +147,17 @@ public class CharacterMovement : MonoBehaviour {
 
     public float getMovevementZPercentage {
         get { return movementZ / speed; }
+    }
+
+    void OnCollisionEnter (Collision collision) {
+        if(collision.gameObject.tag != "Attractor")
+            movementZ = 0;
+    }
+
+    public void Die () {
+        death = true;
+        movementZ = 0;
+        _body.velocity = Vector3.zero;
     }
 
 }

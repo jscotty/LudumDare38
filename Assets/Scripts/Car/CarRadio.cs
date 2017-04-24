@@ -19,6 +19,7 @@ public class CarRadio : MonoBehaviour {
 
     void Start () {
         source = GetComponent<AudioSource>();
+        source.volume = PlayerPrefs.GetFloat("music");
         PlaySound();
     }
 
@@ -56,6 +57,12 @@ public class CarRadio : MonoBehaviour {
         Debug.Log(source.clip.name);
         radioAudioOutput.text =  source.clip.name;
         radioChannelOutput.text = "Channel: " + channels[activeChannel].channelName;
+    }
+
+    public void ChangeSettings () {
+        if(source == null)
+            source = GetComponent<AudioSource>();
+        source.volume = PlayerPrefs.GetFloat("music");
     }
 }
 
