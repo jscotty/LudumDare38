@@ -39,6 +39,7 @@ ModelImporter:
     100062: mixamorig:Spine1
     100064: mixamorig:Spine2
     100066: //RootNode
+    100068: pCylinder22
     400000: mixamorig:Head
     400002: mixamorig:HeadTop_End
     400004: mixamorig:Hips
@@ -73,8 +74,11 @@ ModelImporter:
     400062: mixamorig:Spine1
     400064: mixamorig:Spine2
     400066: //RootNode
+    400068: pCylinder22
+    4300000: pCylinder22
     7400000: mixamo.com
     9500000: //RootNode
+    13700000: pCylinder22
   materials:
     importMaterials: 1
     materialName: 0
