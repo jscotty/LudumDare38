@@ -2,6 +2,7 @@
 //Portfolio: www.justinbieshaar.com 
 //Contact: contact@justinbieshaar.com
 
+#if UNITY_EDITOR
 using UnityEngine;
 using UnityEditor;
 using System.Collections;
@@ -112,3 +113,4 @@ public class DrawCallOptimizerEditor :Editor {
 
     }
 }
+#endif

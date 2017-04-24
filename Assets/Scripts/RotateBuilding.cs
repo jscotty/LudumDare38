@@ -5,7 +5,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+#if UNITY_EDITOR
 using UnityEditor;
+#endif
 
 public class RotateBuilding : MonoBehaviour {
 
@@ -21,6 +23,7 @@ public class RotateBuilding : MonoBehaviour {
     
 }
 
+#if UNITY_EDITOR
 [CustomEditor(typeof(RotateBuilding))]
 public class RotateBuildingEditor : Editor
 {
@@ -35,3 +38,4 @@ public class RotateBuildingEditor : Editor
 
     }
 }
+#endif
