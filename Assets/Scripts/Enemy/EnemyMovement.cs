@@ -10,7 +10,6 @@ using UnityEngine;
 public class EnemyMovement : MonoBehaviour {
 
     [SerializeField] private float speed = 2f;
-    [SerializeField] private float radius = 15f;
 
     public Transform target;
     private Rigidbody body;
@@ -41,12 +40,10 @@ public class EnemyMovement : MonoBehaviour {
                 // If there is a object at the right side of the object then give a random direction
                 if (Physics.Raycast(transform.position, transform.right, directionDistance)) {
                     dIrection = Random.Range(-1, 2);
-                    Debug.Log("E");
                 }
                 // If there is a object at the left side of the object then give a random direction
                 if (Physics.Raycast(transform.position, -transform.right, directionDistance)) {
                     dIrection = Random.Range(-1, 2);
-                    Debug.Log("E2");
                 }
                 // rotate 90 degrees in the random direction 
                 transform.Rotate(Vector3.up, 90 * rotateSpeed * Time.smoothDeltaTime * dIrection);
