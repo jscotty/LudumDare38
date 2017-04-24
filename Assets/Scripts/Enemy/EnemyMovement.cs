@@ -36,25 +36,27 @@ public class EnemyMovement : MonoBehaviour {
         // If distance is bigger then distance between target, wander around.
         if (dist > targetDistance)  {
             //Check if there is a collider in a certain distance of the object if not then do the following
+            Debug.DrawRay(transform.position, transform.forward);
             if (!Physics.Raycast(transform.position, transform.forward, maxDistance)) {
                 // Move forward
                 transform.Translate(Vector3.forward * speed * Time.smoothDeltaTime);
             } else {
-                Debug.Log("E");
                 // If there is a object at the right side of the object then give a random direction
                 if (Physics.Raycast(transform.position, transform.right, directionDistance)) {
                     dIrection = Random.Range(-1, 2);
+                    Debug.Log("E");
                 }
                 // If there is a object at the left side of the object then give a random direction
                 if (Physics.Raycast(transform.position, -transform.right, directionDistance)) {
                     dIrection = Random.Range(-1, 2);
+                    Debug.Log("E2");
                 }
                 // rotate 90 degrees in the random direction 
                 transform.Rotate(Vector3.up, 90 * rotateSpeed * Time.smoothDeltaTime * dIrection);
             }
         }
         // If current distance is smaller than the given ditance, then rotate towards player, and translate the rotation into forward motion times the given speed
-        if (dist> targetDistance)
+        if (dist< targetDistance)
      {
             transform.LookAt(target);
             transform.Translate(Vector3.forward * followSpeed * Time.smoothDeltaTime);

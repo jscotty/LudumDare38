@@ -32,8 +32,8 @@ public class CarAudioController : MonoBehaviour {
     }
 
     void Update () {
-        audios[0].volume = movement.getMovevementZPercentage;
-        audios[1].volume = -movement.getMovevementZPercentage;
+        audios[0].volume = movement.getMovevementZPercentage/2;
+        audios[1].volume = -movement.getMovevementZPercentage/2;
         if (movement.movementZ > 0) {
             if (!isForward)
                 isMoving = false;
