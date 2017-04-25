@@ -16,6 +16,7 @@ public class GameManager :MonoBehaviour {
     [SerializeField] private Text scoreText;
     [SerializeField] private Text timeText;
     [SerializeField] private Text highscoreText;
+    [SerializeField] private GameObject loading;
     [SerializeField] private ParticleSystem explosion;
     [SerializeField] private Animator pause;
 
@@ -41,7 +42,8 @@ public class GameManager :MonoBehaviour {
 
     void Update () {
 
-        if (Input.GetKeyUp(KeyCode.Escape)) {
+        if (Input.GetKeyUp(KeyCode.Escape) || Input.GetKeyUp(KeyCode.P)) {
+            if (died) return;
             paused = !paused;
 
             if (paused)
@@ -86,8 +88,9 @@ public class GameManager :MonoBehaviour {
         explosion.Play();
         character.Die();
         died = true;
+        pause.SetBool("died", true);
 
-        if(PlayerPrefs.GetInt("Score")< (int)score)
+        if (PlayerPrefs.GetInt("Score")< (int)score)
             PlayerPrefs.SetInt("Score", (int) score);
     }
 
@@ -102,5 +105,15 @@ public class GameManager :MonoBehaviour {
 
     public void BackButton () {
         pause.SetInteger("options", 0);
+    }
+
+    public void BackToMenu () {
+        loading.SetActive(true);
+        UnityEngine.SceneManagement.SceneManager.LoadScene(0);
+    }
+
+    public void Restart () {
+        loading.SetActive(true);
+        UnityEngine.SceneManagement.SceneManager.LoadScene(1);
     }
 }

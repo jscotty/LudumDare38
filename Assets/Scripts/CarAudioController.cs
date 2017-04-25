@@ -81,6 +81,8 @@ public class CarAudioController : MonoBehaviour {
         isSlipping = false;
     }
     public void ChangeSettings () {
+        if(audios.Length < 1)
+            audios = GetComponents<AudioSource>();
         for (int i = 0 ; i < audios.Length ; i++) {
             audios[i].volume = PlayerPrefs.GetFloat("effect");
         }

@@ -49,10 +49,13 @@ public class CharacterMovement : MonoBehaviour {
 	}
 
 	void Update() {
-        if (GameManager.paused) return;
+        if (GameManager.paused) {
+            _body.velocity = Vector3.zero;
+            return;
+        }
         if (death) return;
         movementX = Input.GetAxis(HORIZONTAL) * rotationSpeed;
-        if (Input.GetKey(KeyCode.W)) {
+        if (Input.GetKey(KeyCode.W)|| Input.GetKey(KeyCode.UpArrow)) {
 		    movementZ +=  power;
             if (movementZ > 0)
                 movementZ = Mathf.Clamp(movementZ, 0, speed);
@@ -89,7 +92,7 @@ public class CharacterMovement : MonoBehaviour {
                         OnStopBurnout();
                 }
             }
-        } else if (Input.GetKey(KeyCode.S)) {
+        } else if (Input.GetKey(KeyCode.S)|| Input.GetKey(KeyCode.DownArrow)) {
             if (OnSlip != null)
                 OnSlip();
             if (movementZ > 0) {
